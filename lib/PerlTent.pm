@@ -17,6 +17,7 @@ sub startup {
   # Normal route to controller
 	$r->get('/')->to(cb=> sub { shift->render(text=>'This is my Perl Tent'); });
 	$r->get('/profile')->to('profile#profile');
+	$r->post('/profile/*update')->to('profile#update_profile');
 }
 
 1;
