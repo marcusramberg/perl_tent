@@ -15,7 +15,8 @@ sub startup {
   my $r = $self->routes;
 
   # Normal route to controller
-  $r->get('/')->to('example#welcome');
+	$r->get('/')->to(cb=> sub { shift->render(text=>'This is my Perl Tent'); });
+	$r->get('/profile')->to('profile#profile');
 }
 
 1;

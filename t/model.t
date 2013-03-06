@@ -19,12 +19,10 @@ my $profile_data={
 	  "bio"=> "Dolorem ut ut at ipsum esse."
 	};
 my $profile=$db->update_profile("https://tent.io/types/info/core/v0.1.0" => $profile_data);
-diag(Data::Dumper::Dumper($profile_data));
 isa_ok($profile,'Mango::BSON::ObjectID');
 
 my $roundtrip_profile=$db->get_profile($profile);
 is(delete $roundtrip_profile->{_id},$profile,'There was an id to delete');
-diag(Data::Dumper::Dumper($roundtrip_profile));
 is_deeply($roundtrip_profile,$profile_data,'Got back the same result');
 
 my $profiles=$db->get_profiles;
